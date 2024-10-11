@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Examples</title>
+    <style>
+        body {
+            width: 100%;
+            height: 1400px;
+            background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+        }
+
+        #heading {
+            text-align: center;
+        }
+
+        .projects {
+            border: 2px solid black;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        #example6 {
+            background-color: lightgrey;
+            position: relative;
+            left: 400px;
+            padding: 10px;
+            width: 600px;
+            height: 400px;
+        }
+
+        #t6 {
+            position: relative;
+            margin: 10px 0;
+        }
+
+        #example7 {
+            position: relative;
+            left: 400px;
+            background-color: lightgrey;
+            padding: 10px;
+            width: 600px;
+            height: 300px;
+        }
+
+        #myCanvas,
+        #mycanvas {
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+
+        #example3 {
+            border: 2px solid black;
+            border-radius: 30px;
+            width: 504px;
+            height: 300px;
+            background-color: lightgray;
+            position: absolute;
+            top: 1000px;
+            left: 450px;
+        }
+
+        #myCAnvas {
+            border: 2px solid black;
+            border-radius: 30px;
+            background-color: white;
+        }
+
+        #t3 {
+            position: absolute;
+            top: 990px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="heading"><i>Magic of <u>CANVAS</u></i></h1>
+    <hr>
+    <h5 id="t6">Example - 1 </h5>
+    <div id="example6" class="projects">
+        <button id="drawButton">Draw Circle</button>
+        <canvas id="myCanvas" width="500" height="400"></canvas>
+    </div>
+
+    <h5 id="t7">Example - 2 </h5>
+    <div id="example7" class="projects">
+        <canvas id="mycanvas" width="500" height="250"></canvas>
+        <button id="animationbt">Start Animation</button>
+        Enter speed -- <input type="number" id="animationSpeed" placeholder="Enter speed" value="1">
+    </div>
+    <h5 id="t3">Example - 3</h5>
+    <div id="example3">
+        <canvas id="myCAnvas" width="500" height="250"></canvas>
+        <button id="animationbt" onclick="bt()">Start Animation</button>
+    </div>
+    <script>
+        const canvas1 = document.getElementById('myCanvas');
+        const ctx1 = canvas1.getContext('2d');
+        const button = document.getElementById('drawButton');
+
+        button.addEventListener('click', drawCircle);
+
+        function drawCircle() {
+            const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+            const x = Math.random() * canvas1.width;
+            const y = Math.random() * canvas1.height;
+
+            ctx1.beginPath();
+            ctx1.arc(x, y, 20, 0, Math.PI * 2);
+            ctx1.fillStyle = randomColor;
+            ctx1.fill();
+            ctx1.closePath();
+        }
+
+        const canvas2 = document.getElementById("mycanvas");
+        const ctx2 = canvas2.getContext("2d");
+        let a = 0;
+        let animationId;
+
+        function draw() {
+            // Clear the canvas
+            ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+
+            // Define a new path
+            ctx2.beginPath();
+            ctx2.moveTo(0, canvas2.height); // Start from the bottom-left corner
+            ctx2.lineTo(a, 0); // Draw to the top of the line at the current 'a'
+            ctx2.stroke();
+
+            // Get the speed from the input
+            const speed = parseFloat(document.getElementById('animationSpeed').value) || 1;
+            a += speed;
+
+            // Stop the animation if 'a' reaches the max width
+            if (a <= canvas2.width) {
+                animationId = requestAnimationFrame(draw);
+            }
+        }
+
+        document.getElementById("animationbt").addEventListener("click", function () {
+            a = 0; // Reset 'a' to 0 and start the animation
+            cancelAnimationFrame(animationId); // Stop any previous animation
+            draw();
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const canvas = document.getElementById('myCAnvas');
+            const ctx = canvas.getContext('2d');
+            let a = 0;
+            let animationId;
+
+            function draw() {
+                // Clear the canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Define a new path
+                ctx.beginPath();
+
+                // Set a start-point (bottom-left corner)
+                ctx.moveTo(0, canvas.height);
+
+                // Set an end-point (top-right corner)
+                ctx.lineTo(a, canvas.height - (canvas.height * (a / canvas.width)));
+
+                // Draw the line
+                ctx.stroke();
+
+                // Get the speed from the input
+                const speed = parseFloat(document.getElementById('animationSpeed').value) || 1;
+
+                // Increment 'a' for the next frame
+                a += speed;
+
+                const width = canvas.width;
+
+                // Stop the animation if 'a' reaches the max width
+                if (a <= width) {
+                    animationId = requestAnimationFrame(draw);
+                }
+            }
+
+            window.bt = function () {
+                // Reset 'a' to 0 and start the animation
+                a = 0;
+                cancelAnimationFrame(animationId); // Stop any previous animation
+                draw();
+            };
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic of Java Script</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, lightgray, white);
+        }
+
+        #heading {
+            text-align: center;
+        }
+
+        .projects {
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        #example1 {
+            background-color: darkgray;
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 200px;
+            left: 400px;
+        }
+
+        #svg {
+            width: 500px;
+            height: 500px;
+        }
+
+        #bt1 {
+            position: absolute;
+            top: 410px;
+            left: 210px;
+        }
+
+        #bt2 {
+            position: absolute;
+            top: 410px;
+            left: 300px;
+        }
+
+        #example2 {
+            background-color: whitesmoke;
+            width: 500px;
+            height: 200px;
+            position: absolute;
+            top: 800px;
+            left: 400px;
+        }
+
+        #t1 {
+            position: absolute;
+            top: 750px;
+            left: 20px;
+        }
+
+        #example3 {
+            background-color: whitesmoke;
+            width: 500px;
+            height: 300px;
+            position: absolute;
+            top: 1100px;
+            left: 400px;
+        }
+
+        #t2 {
+            position: absolute;
+            top: 1000px;
+            left: 20px;
+        }
+
+        #bt4 {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+        }
+
+        #t3 {
+            position: absolute;
+            top: 1440px;
+            left: 20px;
+        }
+
+        #example4 {
+            position: absolute;
+            top: 1500px;
+            left: 400px;
+            width: 500px;
+            height: 200px;
+            background-color: whitesmoke;
+        }
+
+        #bt3 {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+        }
+
+        #ani {
+            position: absolute;
+        }
+
+        .animation {
+            animation-name: animation1;
+            animation-duration: 2s;
+            animation-iteration-count: 3;
+        }
+
+        @keyframes animation1 {
+            0% {
+                top: 2px;
+                left: 0%;
+            }
+
+            50% {
+                top: 2px;
+                left: 78%;
+            }
+
+            100% {
+                top: 2px;
+                left: 0%;
+            }
+        }
+
+        #t4 {
+            position: absolute;
+            top: 1750px;
+            left: 20px;
+        }
+
+        #claext {
+            text-align: center;
+        }
+
+        #example5 {
+            position: absolute;
+            top: 1800px;
+            left: 400px;
+            width: 500px;
+            height: 400px;
+            background-color: whitesmoke;
+        }
+
+        .text {
+            text-align: center;
+        }
+
+        .button {
+            padding: 20px;
+            margin: 0 3px;
+            border: 2px solid black;
+            border-radius: 9px;
+            cursor: pointer;
+        }
+
+        button:active {
+            border: 2.8px solid black;
+        }
+
+        .row {
+            margin: 8px 0;
+        }
+
+        #myinput {
+            padding: 20px;
+            margin: 0 3px;
+            border: 2px solid black;
+            border-radius: 9px;
+            align-items: center;
+        }
+
+        .calcontent {
+            position: absolute;
+            top: 60px;
+            left: 30%;
+        }
+
+        #myCanvas {
+            border: 1px solid black;
+            background-color: lightgray;
+        }
+
+        #example6 {
+            background-color: darkgray;
+            position: absolute;
+            top: 2350px;
+            left: 400px;
+        }
+
+        #t6 {
+            position: absolute;
+            left: 20px;
+            top: 2200px;
+        }
+
+        #fullscreenButton {
+            position: fixed;
+            top: 5px;
+            left: 2px;
+            border: 2px solid lightgray;
+            border-radius: 6px;
+            background-color: black;
+            color: white;
+        }
+
+        #example7 {
+            position: absolute;
+            left: 400px;
+            top: 2900px;
+            width: 500px;
+            height: 300px;
+            background-color: lightgrey;
+        }
+
+        #mycanvas {
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+
+        #t7 {
+            position: absolute;
+            top: 2800px;
+            left: 20px;
+        }
+
+        #dg {
+            position: absolute;
+            top: 3800px;
+            left: 1200px;
+        }
+
+        #example8 {
+            background-color: lightgray;
+            position: absolute;
+            top: 3300px;
+            left: 500px;
+            width: 300px;
+            height: 400px;
+        }
+
+        #convertlabel,
+        select,
+        #amount {
+            display: block;
+            margin: 10px 0;
+        }
+
+        #convertbutton {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #t8 {
+            position: absolute;
+            top: 3250px;
+            left: 20px;
+        }
+    </style>
+    <script>
+        function glow() {
+            document.getElementById('bulb').setAttribute('fill', 'yellow');
+            document.getElementById("example1").style.backgroundColor = "white";
+        }
+
+        function dull() {
+            document.getElementById('bulb').setAttribute('fill', 'gray');
+            document.getElementById("example1").style.backgroundColor = "darkgray";
+        }
+
+        function updateDemo() {
+            document.getElementById("demo1").innerHTML = "Input received";
+        }
+
+        function calculateLength() {
+            let inputElement = document.getElementById("input");
+            let text = inputElement.value;
+            document.getElementById("main").innerHTML = "Length: " + text.length;
+        }
+
+        function bt() {
+            let text = document.getElementById('text').value;
+            let number = parseInt(document.getElementById('number').value, 10);
+            let output = '';
+
+            for (let a = 0; a < number; a++) {
+                output += text + '<br>';
+            }
+
+            document.getElementById('demo').innerHTML = output;
+            document.getElementById('demo2').innerHTML = 'Output';
+        }
+
+        function animation() {
+            let heading = document.getElementById('ani');
+            heading.classList.add('animation');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let string = "";
+            let buttons = document.querySelectorAll('.button');
+            Array.from(buttons).forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    if (e.target.innerHTML == '=') {
+                        string = eval(string);
+                        document.getElementById('myinput').value = string;
+                    } else {
+                        string += e.target.innerHTML;
+                        document.getElementById('myinput').value = string;
+                    }
+                });
+            });
+
+            const canvas = document.getElementById('myCanvas');
+            const ctx = canvas.getContext('2d');
+            const button = document.getElementById('drawButton');
+
+            button.addEventListener('click', drawCircle);
+
+            function drawCircle() {
+                const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+
+                ctx.beginPath();
+                ctx.arc(x, y, 20, 0, Math.PI * 2);
+                ctx.fillStyle = randomColor;
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            const fullscreenButton = document.getElementById('fullscreenButton');
+
+            fullscreenButton.addEventListener('click', () => {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                    document.getElementById('fullscreenButton').innerHTML = 'Go Full Screen'
+                } else {
+                    document.documentElement.requestFullscreen();
+                    document.getElementById('fullscreenButton').innerHTML = 'Exit Full Screen'
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const canvas = document.getElementById('mycanvas');
+            const ctx = canvas.getContext('2d');
+            let a = 0;
+            let animationId;
+
+            function draw() {
+                // Clear the canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Define a new path
+                ctx.beginPath();
+
+                // Set a start-point (bottom-left corner)
+                ctx.moveTo(0, canvas.height);
+
+                // Set an end-point (top-right corner)
+                ctx.lineTo(a, canvas.height - (canvas.height * (a / canvas.width)));
+
+                // Draw the line
+                ctx.stroke();
+
+                // Get the speed from the input
+                const speed = parseFloat(document.getElementById('animationSpeed').value) || 1;
+
+                // Increment 'a' for the next frame
+                a += speed;
+
+                const width = canvas.width;
+
+                // Stop the animation if 'a' reaches the max width
+                if (a <= width) {
+                    animationId = requestAnimationFrame(draw);
+                }
+            }
+
+            window.bt = function () {
+                // Reset 'a' to 0 and start the animation
+                a = 0;
+                cancelAnimationFrame(animationId); // Stop any previous animation
+                draw();
+            };
+        });
+        const exchangeRates = {
+            USD: { EUR: 0.85, GBP: 0.75, INR: 74.15, JPY: 110.53 },
+            EUR: { USD: 1.18, GBP: 0.88, INR: 87.32, JPY: 129.98 },
+            GBP: { USD: 1.33, EUR: 1.14, INR: 99.47, JPY: 146.62 },
+            INR: { USD: 0.013, EUR: 0.011, GBP: 0.010, JPY: 1.48 },
+            JPY: { USD: 0.0091, EUR: 0.0077, GBP: 0.0068, INR: 0.68 }
+        };
+
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById("amount").value);
+            const fromCurrency = document.getElementById("fromCurrency").value;
+            const toCurrency = document.getElementById("toCurrency").value;
+
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById("result").innerText = "Please enter a valid amount.";
+                return;
+            }
+
+            if (fromCurrency === toCurrency) {
+                document.getElementById("result").innerText = "Please select different currencies.";
+                return;
+            }
+
+            const rate = fromCurrency === "INR" ? 1 / exchangeRates[toCurrency][fromCurrency] : exchangeRates[fromCurrency][toCurrency];
+            const convertedAmount = (amount * rate).toFixed(2);
+            document.getElementById("result").innerText = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+        }
+    </script>
+</head>
+
+<body>
+    <button id="fullscreenButton">Go Full Screen</button>
+    <h1 id="heading"><i>Magic of <u>JAVA SCRIPT</u></i></h1>
+    <hr>
+    <h3 id="what">On this web page you will get so many <u>examples of projects</u> that you can use to
+        practice.</h3>
+    <hr>
+    <hr style="width: 100%; position:absolute;top:3790px;" />
+    <hr style="width: 100%; position:absolute;top:3855px;" />
+    <h2 id="dg"><i>~ Atharva Sharma</i></h2>
+    <h5>Example - 1</h5>
+    <div id="example1" class="projects">
+        [The bulb is made by SVG.]
+        <svg id="svg">
+            <ellipse rx="60px" ry="90px" cx="100px" cy="120px" fill="gray" stroke="black" stroke-width="3px"
+                id="bulb" />
+            <line x1="100px" y1="50px" x2="100px" y2="170px" stroke="black" stroke-width="2px" />
+            <line x1="50px" y1="120px" x2="150px" y2="120px" stroke="black" stroke-width="2px" />
+            <rect width="100" height="90" x="50" y="200" rx="20" ry="20" fill="black" />
+            <line x1="75px" y1="290px" x2="75px" y2="400px" stroke="black" stroke-width="2px" />
+            <line x1="75px" y1="400px" x2="300px" y2="400px" stroke="black" stroke-width="2px" />
+        </svg>
+        <button id="bt1" onclick="glow()">Click to glow</button>
+        <button id="bt2" onclick="dull()">Click to dull</button>
+    </div>
+
+    <h5 id="t1">Example - 2</h5>
+    <div id="example2" class="projects">
+        <h5>This function is to get the length of any text</h5>
+        Enter text which length you want to know: <input id="input" type="text" onkeydown="updateDemo()">
+        <p id="demo1"></p>
+        <p id="main"></p>
+        <button id="bt" onclick="calculateLength()">Click to know length of your input</button>
+    </div>
+
+    <h5 id="t2">Example - 3</h5>
+    <div id="example3" class="projects">
+        Enter the text you want to generate: <input type="text" id="text"><br><br>
+        Enter how many times you want the text: <input type="number" id="number"><br><br>
+        <button id="bt4" onclick="bt()">Generate</button>
+        <h3 id="demo2"></h3>
+        <p id="demo"></p>
+    </div>
+
+    <h5 id="t3">Example - 4</h5>
+    <div id="example4" class="projects">
+        <h1 id="ani">Heading</h1>
+        <button id="bt3" onclick="animation()">Click to start a basic animation.</button>
+    </div>
+
+    <h5 id="t4">Example - 5</h5>
+    <div id="example5" class="projects">
+        <h1 id="claext">Calculator</h1>
+        <div class="calcontent">
+            <div class="row">
+                &nbsp &nbsp &nbsp<input class="input" id="myinput" type="text">
+            </div>
+            <div class="row">
+                <button class="button">7</button>
+                <button class="button">8</button>
+                <button class="button">9</button>
+                <button class="button">*</button>
+            </div>
+            <div class="row">
+                <button class="button">4</button>
+                <button class="button">5</button>
+                <button class="button">6</button>
+                <button class="button">-</button>
+            </div>
+            <div class="row">
+                <button class="button">1</button>
+                <button class="button">2</button>
+                <button class="button">3</button>
+                <button class="button">+</button>
+            </div>
+            <div class="row">
+                <button class="button">0</button>
+                <button class="button">.</button>
+                <button class="button">=</button>
+                <button class="button">/</button>
+            </div>
+        </div>
+    </div>
+
+    <h5 id="t6">Example - 6 , using canvas</h5>
+    <div id="example6" class="projects">
+        <button id="drawButton">Draw Circle</button>
+        <canvas id="myCanvas" width="500" height="400"></canvas>
+    </div>
+    <h5 id="t7">Example - 7 , using canvas</h5>
+    <div id="example7" class="projects">
+        <canvas id="mycanvas" width="500" height="250"></canvas>
+        <button id="animationbt" onclick="bt()">Start Animation</button>
+        <label for="animationSpeed">Enter speed:</label>
+        <input type="number" id="animationSpeed" placeholder="Enter speed" value="1" min="0.1" step="0.1">
+    </div>
+    <h5 id="t8">Example - 8</h5>
+    <div id="example8" class="projects">
+        <h1>Currency Converter</h1>
+        <label id="convertbutton" for="amount">Amount:</label>
+        <input type="number" id="amount" required>
+
+        <label for="fromCurrency">From Currency:</label>
+        <select id="fromCurrency">
+            <option value="USD">US Dollar (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">British Pound (GBP)</option>
+            <option value="INR">Indian Rupee (INR)</option>
+            <option value="JPY">Japanese Yen (JPY)</option>
+        </select>
+
+        <label for="toCurrency">To Currency:</label>
+        <select id="toCurrency">
+            <option value="USD">US Dollar (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">British Pound (GBP)</option>
+            <option value="INR">Indian Rupee (INR)</option>
+            <option value="JPY">Japanese Yen (JPY)</option>
+        </select>
+
+        <button id="convertbutton" onclick="convertCurrency()">Convert</button>
+
+        <div class="result" id="result"></div>
+    </div>
+</body>
+
+</html>
